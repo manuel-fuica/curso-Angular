@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SidemenuComponent } from '../shared/sidemenu/sidemenu.component';
+//este alias esta creado en el archivo tsconfig, en la seccion paths asi podemos llamar a la ruta de la carpeta shared
+import { SidemenuComponent } from '@shared/sidemenu/sidemenu.component';
 
 @Component({
   standalone: true,

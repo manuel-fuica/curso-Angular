@@ -1,1 +1,55 @@
-<p>control-flow works!</p>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-3">
+
+    <!--ngif @if-->
+    <div class="bg-white rounded shadow p-10">
+        <h2 class="text-2xl font-bold mb-5">if: {{showContent()}}</h2>
+
+        <!--Genramos un btn con sus respectivas clases y le pasamos la función toggleContent al hacer click-->
+        <button class="p-2 bg-blue-500 text-white rounded" (click)="toggleContent()">
+            Click me!
+        </button>
+
+        <!--control de flujo, si esta en if mostramos el p del if si no mostramos el del else, esto lo cambia al momento de hacer click en el btn-->
+        @if (showContent()) {
+        <p>estoy en el if</p>
+        } @else {
+        <p>estoy en el else</p>
+        }
+    </div>
+
+
+    <!--trabajando con @switch-->
+    <div class="bg-white rounded shadow p-10">
+
+        <h2 class="text-3xl">{{grade()}}</h2>
+
+        @switch (grade()) {
+
+        @case ('A') {
+        <p>Arriba de 90</p>
+        }
+        @case ('B') {
+        <p>Arriba de 80</p>
+        }
+        @default {
+        <p>Reprobado</p>
+        }
+        }
+    </div>
+
+    <!--trabajando con @for-->
+    <div class="bg-white rounded shadow p-10">
+
+        <ul>
+            @for (framework of frameworks(); track $index) {
+                <li>{{framework}}</li>
+            }
+        </ul>
+
+        <ul>
+            @for (framework of frameworks(); track $index) {
+                <li>{{framework}}</li>
+            }
+        </ul>
+    </div>
+</section>

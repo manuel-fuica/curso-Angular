@@ -1,1 +1,112 @@
-<p>defer-options works!</p>
+<app-title title="Defer Triggers"></app-title>
+
+
+<section>
+
+    <h1 class="text-xl">Interacciones</h1>
+    <hr class="my-2">
+
+    <!-- muestra primero lo del placeholder al cargar, si doy click en el div pasa a mostar lo del on interaction -->
+    @defer (on interaction) {
+        <heavy-loaders-fast cssClass="bg-blue-500 h-20">
+            <span>On inetraction</span>
+        </heavy-loaders-fast>
+    }@placeholder {
+        <div class="w-full h-20 bg-purple-100">
+            Click en el div
+        </div>
+    }
+
+</section>
+
+<section>
+
+    <hr class="my-2">
+
+    <!-- creo una referencia con #btnInteraction para llamar al btn-->
+    <button
+        #btnInteraction 
+        class="p-2 bg-blue-500 hover:bg-blue-700 transition-all text-white rounded my-2">
+        Click me!
+    </button>
+
+    <!-- muestra primero lo del placeholder al cargar, si doy click en el elemento referenciado dentro del on interaction, realiza los cambios -->
+    @defer (on interaction(btnInteraction)) {
+        <heavy-loaders-fast cssClass="bg-blue-500 h-20">
+            <span>On inetraction</span>
+        </heavy-loaders-fast>
+    }@placeholder {
+        <div class="w-full h-20 bg-purple-100">
+            Click en el boton
+        </div>
+    }
+
+</section>
+
+<section>
+
+    <hr class="my-2">
+
+    <!--hover, carga al pasar por encima, si paso parametros entre parentesis carga al pasar sobre esa referencia, si no paso nada, lo hace al pasar por el elemento -->
+    @defer (on hover (btnInteraction)) {
+        <heavy-loaders-fast cssClass="bg-blue-500 h-20">
+            <span>On inetraction</span>
+        </heavy-loaders-fast>
+    }@placeholder {
+        <div class="w-full h-20 bg-purple-100">
+            On hover
+        </div>
+    }
+
+</section>
+
+<section>
+
+    <hr class="my-2">
+
+    <!--immediate, carga inmediatamente esta seccion-->
+    @defer (on immediate) {
+        <heavy-loaders-fast cssClass="bg-blue-500 h-20">
+            <span>On immediate</span>
+        </heavy-loaders-fast>
+    }@placeholder {
+        <div class="w-full h-20 bg-purple-100">
+            Click en el div
+        </div>
+    }
+
+</section>
+
+<section>
+
+    <hr class="my-2">
+
+    <!--timer, carga en 2 segundos, el tiempo se pasa entre parentesis-->
+    @defer (on timer(2000)) {
+        <heavy-loaders-fast cssClass="bg-green-500 h-20">
+            <span>On Timer</span>
+        </heavy-loaders-fast>
+    }@placeholder {
+        <div class="w-full h-20 bg-purple-100">
+            2 Segundos
+        </div>
+    }
+
+</section>
+
+<section>
+
+    <hr class="my-2">
+
+    <!--utilizamos dos condiciones on hover y on idle-->
+    @defer (on hover; prefetch on idle) {
+        <heavy-loaders-fast cssClass="bg-green-500 h-20">
+            <span>On Hover, On idle</span>
+        </heavy-loaders-fast>
+    }@placeholder {
+        <div class="w-full h-20 bg-purple-100">
+            2 Segundos
+        </div>
+    }
+
+</section>

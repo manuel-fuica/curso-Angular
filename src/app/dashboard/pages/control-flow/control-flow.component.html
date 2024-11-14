@@ -1,3 +1,6 @@
+<!-- llamamos el omponente app-title y le indicamos el title que debe tener-->
+<app-title title="Control Flow" withShadow ></app-title>
+
 <section class="grid grid-cols-1 md:grid-cols-2 gap-3">
 
     <!--ngif @if-->
@@ -40,16 +43,22 @@
     <!--trabajando con @for-->
     <div class="bg-white rounded shadow p-10">
 
+        <!--muestra los frameworks que estan en el array enlistados hacia abajo, la i es para mostrar el indice, +1 ya que el indice parte en cero-->
         <ul>
-            @for (framework of frameworks(); track $index) {
-                <li>{{framework}}</li>
+            @for (framework of frameworks(); track frameworks;
+            let i = $index, first = $first, last = $last, even = $even, odd = $odd, count = $count) {
+                <li>{{i + 1}}/ {{count}} - {{framework}}</li>
             }
         </ul>
+    </div>
 
+    <div class="bg-white rounded shadow p-10">
         <ul>
-            @for (framework of frameworks(); track $index) {
+            @for (framework of frameworks2(); track $index) {
                 <li>{{framework}}</li>
-            }
+            } @empty {
+                <li>No hay frameworks agregados</li>
+            } 
         </ul>
     </div>
 </section>

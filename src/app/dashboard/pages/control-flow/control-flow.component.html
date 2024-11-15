@@ -1,23 +1,21 @@
 <!-- llamamos el omponente app-title y le indicamos el title que debe tener-->
-<app-title title="Control Flow" withShadow ></app-title>
+<app-title title="Control Flow"></app-title>
 
 <section class="grid grid-cols-1 md:grid-cols-2 gap-3">
 
     <!--ngif @if-->
     <div class="bg-white rounded shadow p-10">
-        <h2 class="text-2xl font-bold mb-5">if: {{showContent()}}</h2>
+        <h2 class="text-2xl font-bold mb-5">Ticket Status: {{showContent()}}</h2>
 
         <!--Genramos un btn con sus respectivas clases y le pasamos la función toggleContent al hacer click-->
-        <button class="p-2 bg-blue-500 text-white rounded" (click)="toggleContent()">
-            Click me!
+        <button [ngClass]="{'bg-green-500': showContent() === 'Abierto', 'bg-blue-500': showContent() === 'Cerrado'}"
+            class="p-2 mr-3 text-white rounded" (click)="toggleContent()">
+            Cambiar Status
         </button>
 
         <!--control de flujo, si esta en if mostramos el p del if si no mostramos el del else, esto lo cambia al momento de hacer click en el btn-->
-        @if (showContent()) {
-        <p>estoy en el if</p>
-        } @else {
-        <p>estoy en el else</p>
-        }
+        <!-- @if (showContent()) {
+        } -->
     </div>
 
 
@@ -47,7 +45,7 @@
         <ul>
             @for (framework of frameworks(); track frameworks;
             let i = $index, first = $first, last = $last, even = $even, odd = $odd, count = $count) {
-                <li>{{i + 1}}/ {{count}} - {{framework}}</li>
+            <li>{{i + 1}}/ {{count}} - {{framework}}</li>
             }
         </ul>
     </div>
@@ -55,10 +53,10 @@
     <div class="bg-white rounded shadow p-10">
         <ul>
             @for (framework of frameworks2(); track $index) {
-                <li>{{framework}}</li>
+            <li>{{framework}}</li>
             } @empty {
-                <li>No hay frameworks agregados</li>
-            } 
+            <li>No hay tickets agregados</li>
+            }
         </ul>
     </div>
 </section>
